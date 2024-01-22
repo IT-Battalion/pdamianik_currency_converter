@@ -93,7 +93,7 @@ class Controller:
             available_currencies = self.source.available_currencies()
         except Exception as e:
             self.view.set_status(e.__class__.__name__)
-        self.view.set_available_currencies(available_currencies[0], available_currencies[1])
+        self.view.set_available_currencies(*available_currencies)
 
     def reconfigure(self, option: str):
         """

@@ -4,7 +4,7 @@ from PyQt6.QtGui import QActionGroup
 from PyQt6.QtWidgets import *
 from PyQt6 import uic
 
-from currencyconverter.model import Source
+from ..model import Source
 
 
 class View(QMainWindow):
@@ -26,6 +26,8 @@ class View(QMainWindow):
     a_loading_placeholder: QWidgetAction
     a_select_all: QWidgetAction
 
+    statusbar: QStatusBar
+
     """
     A dictionary that contains the short and long form of all available currencies.
     """
@@ -36,7 +38,7 @@ class View(QMainWindow):
     """
     config_actions: dict[str, list[QWidgetAction]] = {}
 
-    def __init__(self, controller, sources: dict[str, tuple[Callable[[any, dict], Source], dict]]):
+    def __init__(self, controller, sources: dict[str, tuple[Callable[[dict], Source], dict]]):
         """
         Initialize the main window and all its widgets.
         :param controller: The controller object that is used to communicate with the model.
